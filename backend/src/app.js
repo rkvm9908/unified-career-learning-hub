@@ -39,5 +39,10 @@ app.get("/", (req, res) => {
         message: "Unified Career & Learning Hub Backend API is Running 🚀"
     });
 });
+// 404 Middleware
+app.use(notFound);
+
+// Global Error Middleware
+app.use(errorHandler);
 
 module.exports = app;

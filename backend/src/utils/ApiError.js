@@ -11,7 +11,8 @@ class ApiError extends Error {
         this.success = false;
         this.statusCode = statusCode;
         this.message = message;
-        this.errors = errors;
+        this.errors = Array.isArray(errors) ? errors : [];
+        this.timestamp = new Date().toISOString();
 
         if (stack) {
             this.stack = stack;

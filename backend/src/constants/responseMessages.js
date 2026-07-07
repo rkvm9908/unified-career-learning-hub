@@ -17,7 +17,14 @@ const RESPONSE_MESSAGES = Object.freeze({
     LOGOUT_SUCCESS: "Logout successful",
     PASSWORD_RESET_SUCCESS: "Password reset successfully",
     EMAIL_VERIFIED: "Email verified successfully",
-
+    EMAIL_ALREADY_EXISTS: "Email already exists",
+    USERNAME_ALREADY_EXISTS: "Username already exists",
+    ACCOUNT_DISABLED: "Account is disabled",
+    ACCOUNT_NOT_VERIFIED: "Please verify your email first",
+    PASSWORD_CHANGED: "Password changed successfully",
+    PROFILE_UPDATED: "Profile updated successfully",
+    TOKEN_REFRESHED: "Token refreshed successfully", 
+    
     // ===========================
     // Validation & Errors
     // ===========================
@@ -27,7 +34,8 @@ const RESPONSE_MESSAGES = Object.freeze({
     FORBIDDEN: "Access denied",
     USER_NOT_FOUND: "User not found",
     ROUTE_NOT_FOUND: "Route not found",
-
+    VALIDATION_FAILED: "Validation failed",
+    
     // ===========================
     // Server
     // ===========================

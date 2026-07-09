@@ -62,8 +62,14 @@ const userSchema = new Schema(
         },
 
         profileImage: {
-            type: String,
-            default: ""
+            url: {
+                type: String,
+                default: ""
+            },
+            publicId: {
+                type: String,
+                default: ""
+            }
         },
 
         bio: {
@@ -172,11 +178,17 @@ userSchema.pre("save", async function () {
         this.email = this.email.toLowerCase();
     }
 
-    // Hash password only if modified
+    // Password not modified
     if (!this.isModified("password")) {
         return;
     }
 
+    // Update password changed time
+    if (!this.isNew) {
+        this.passwordChangedAt = new Date();
+    }
+
+    // Hash password
     this.password = await bcrypt.hash(
         this.password,
         Number(process.env.BCRYPT_SALT_ROUNDS) || 10

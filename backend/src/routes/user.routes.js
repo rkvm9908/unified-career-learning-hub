@@ -1,17 +1,56 @@
 const express = require("express");
 
-const { getMyProfile } = require("../controllers/user.controller");
+const {
+    getMyProfile,
+    updateMyProfile,
+    changeMyPassword,
+    uploadMyProfileImage,
+    deleteMyAccount
+} = require("../controllers/user.controller");
 const { protect } = require("../middleware/auth.middleware");
 
+const validate = require("../middleware/validate.middleware");
+const upload = require("../middleware/upload.middleware");
 const router = express.Router();
+const {
+    updateProfileSchema,
+    changePasswordSchema
+} = require("../validators/user.validator");
+
+router.route("/me")
+    .get(
+        protect,
+        getMyProfile
+    )
+    .delete(
+        protect,
+        deleteMyAccount
+    )
+    .patch(
+        protect,
+        validate(updateProfileSchema),
+        updateMyProfile
+    );
 
 /**
- * Get Logged In User Profile
+ * Change Password
  */
-router.get(
-    "/me",
+router.patch(
+    "/change-password",
     protect,
-    getMyProfile
+    validate(changePasswordSchema),
+    changeMyPassword
 );
+
+/**
+ * Upload Profile Image
+ */
+router.patch(
+    "/profile-image",
+    protect,
+    upload.single("profileImage"),
+    uploadMyProfileImage
+);
+
 
 module.exports = router;

@@ -10,11 +10,16 @@ const protect = asyncHandler(async (req, res, next) => {
     const accessToken =
     req.cookies.accessToken ||
     req.header("Authorization")?.replace("Bearer ", "");
-
     if (!accessToken) {
         throw new ApiError(
             401,
             RESPONSE_MESSAGES.UNAUTHORIZED
+        );
+    }
+    if (!user.isActive) {
+        throw new ApiError(
+            403,
+            RESPONSE_MESSAGES.ACCOUNT_DEACTIVATED
         );
     }
 

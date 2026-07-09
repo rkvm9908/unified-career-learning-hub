@@ -20,11 +20,13 @@ const RESPONSE_MESSAGES = Object.freeze({
     EMAIL_ALREADY_EXISTS: "Email already exists",
     USERNAME_ALREADY_EXISTS: "Username already exists",
     ACCOUNT_DISABLED: "Account is disabled",
+    ACCOUNT_DELETED: "Account deleted successfully.",
     ACCOUNT_NOT_VERIFIED: "Please verify your email first",
+    ACCOUNT_DEACTIVATED: "Account is deactivated. Please contact support for assistance.",
     PASSWORD_CHANGED: "Password changed successfully",
     PROFILE_UPDATED: "Profile updated successfully",
     TOKEN_REFRESHED: "Token refreshed successfully", 
-    
+
     // ===========================
     // Validation & Errors
     // ===========================

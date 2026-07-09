@@ -101,6 +101,13 @@ const loginUser = async ({ email, password }) => {
         );
     }
 
+    if (!user.isActive) {
+        throw new ApiError(
+            403,
+            RESPONSE_MESSAGES.ACCOUNT_DEACTIVATED
+        );
+    }
+
     // Verify password
     const isPasswordValid = await user.comparePassword(password);
 

@@ -14,6 +14,7 @@ const notificationRoutes = require("./notification.routes");
 const resumeRoutes = require("./resume.routes");
 const adminRoutes = require("./admin.routes");
 const healthRoutes = require("./health.routes");
+const commentRoutes = require("./routes/comment.routes");
 
 router.use("/auth", authRoutes);
 router.use("/user", userRoutes);
@@ -27,5 +28,6 @@ router.use("/notification", notificationRoutes);
 router.use("/resume", resumeRoutes);
 router.use("/admin", adminRoutes);
 router.use("/health", healthRoutes);
+router.use("/api/comment", commentRoutes);
 
 module.exports = router;

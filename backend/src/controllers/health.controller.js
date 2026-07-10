@@ -17,7 +17,7 @@ const RESPONSE_MESSAGES = require("../constants/responseMessages");
         )
     );
 
-};
+}; 
 
 module.exports = {
     healthCheck

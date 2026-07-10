@@ -25,7 +25,7 @@ const getSafeUserProfile = (user) => ({
 });
 
 const { uploadImage } = require("./upload.service");
-
+const Project = require("../models/Project.model");
 /**
  * Get Logged-in User Profile
  */
@@ -188,11 +188,82 @@ const deleteAccount = async (userId) => {
     return;
 };
 
+/**
+ * Toggle Bookmark
+ */
+const toggleBookmark = async (
+    userId,
+    projectId
+) => {
+
+    const user = await User.findById(userId);
+
+    const project = await Project.findOne({
+        _id: projectId,
+        isActive: true
+    });
+
+    if (!project) {
+        throw new ApiError(
+            404,
+            RESPONSE_MESSAGES.PROJECT_NOT_FOUND
+        );
+    }
+
+    const alreadyBookmarked =
+        user.bookmarks.some(
+            id => id.toString() === projectId
+        );
+
+    if (alreadyBookmarked) {
+
+        user.bookmarks =
+            user.bookmarks.filter(
+                id => id.toString() !== projectId
+            );
+
+    } else {
+
+        user.bookmarks.push(projectId);
+
+    }
+
+    await user.save({
+        validateBeforeSave: false
+    });
+
+    return {
+        bookmarked: !alreadyBookmarked
+    };
+};
+
+/**
+ * Get My Bookmarks
+ */
+const getBookmarks = async (userId) => {
+
+    const user = await User.findById(userId)
+        .populate({
+            path: "bookmarks",
+            match: {
+                isActive: true
+            },
+            populate: {
+                path: "owner",
+                select: "firstName lastName username profileImage"
+            }
+        });
+
+    return user.bookmarks;
+};
+
 module.exports = {
     getProfile,
     getSafeUserProfile,
     updateProfile,
     changePassword,
     updateProfileImage,
-    deleteAccount
+    deleteAccount,
+    toggleBookmark,
+    getBookmarks
 };

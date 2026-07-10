@@ -3,7 +3,9 @@ const {
     updateProfile,
     changePassword,
     updateProfileImage,
-    deleteAccount
+    deleteAccount,
+    toggleBookmark,
+    getBookmarks
 } = require("../services/user.service");
 const ApiResponse = require("../utils/ApiResponse");
 const asyncHandler = require("../utils/asyncHandler");
@@ -102,10 +104,49 @@ const deleteMyAccount = asyncHandler(async (req, res) => {
     );
 });
 
+/**
+ * Toggle Bookmark
+ */
+const toggleBookmarkController =
+asyncHandler(async (req, res) => {
+
+    const result =
+        await toggleBookmark(
+            req.user.id,
+            req.params.projectId
+        );
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            "Bookmark updated successfully.",
+            result
+        )
+    );
+});
+
+/**
+ * Get My Bookmarks
+ */
+const getBookmarksController = asyncHandler(async (req, res) => {
+
+    const bookmarks = await getBookmarks(req.user.id);
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            "Bookmarks fetched successfully.",
+            bookmarks
+        )
+    );
+});
+
 module.exports = {
     getMyProfile,
     updateMyProfile,
     changeMyPassword,
     uploadMyProfileImage,
-    deleteMyAccount
+    deleteMyAccount,
+    toggleBookmarkController,
+    getBookmarksController
 };

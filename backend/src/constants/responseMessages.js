@@ -41,7 +41,43 @@ const RESPONSE_MESSAGES = Object.freeze({
     // ===========================
     // Server
     // ===========================
-    INTERNAL_SERVER_ERROR: "Internal server error"
+    INTERNAL_SERVER_ERROR: "Internal server error",
+
+    // ===========================
+    // Project
+    // ===========================
+
+    PROJECT_CREATED: "Project created successfully.",
+    PROJECTS_FETCHED: "Projects fetched successfully.",
+    PROJECT_FETCHED: "Project fetched successfully.",
+    PROJECT_NOT_FOUND: "Project not found.",
+    PROJECT_UPDATED: "Project updated successfully.",
+    PROJECT_DELETED: "Project deleted successfully.",
+    PROJECT_IMAGE_UPDATED: "Project image updated successfully.",
+    PROJECT_FEATURE_UPDATED: "Project feature status updated successfully.",
+    FEATURED_PROJECTS_FETCHED: "Featured projects fetched successfully.",
+
+    // ===========================
+    // Image
+    // ===========================
+    IMAGE_REQUIRED: "Please upload an image.",
+    IMAGE_UPLOADED: "Image uploaded successfully.",
+
+    // ===========================
+    // Bookmarks
+    // ===========================
+    BOOKMARK_ADDED: "Project bookmarked successfully.",
+    BOOKMARK_REMOVED: "Project removed from bookmarks successfully.",
+    BOOKMARKS_FETCHED: "Bookmarked projects fetched successfully.",
+
+    // ===========================
+    // Comments
+    // ===========================
+    COMMENT_ADDED: "Comment added successfully.",
+    COMMENTS_FETCHED: "Comments fetched successfully.",
+    COMMENT_UPDATED: "Comment updated successfully.",
+    COMMENT_DELETED: "Comment deleted successfully.",
+    COMMENT_NOT_FOUND: "Comment not found.",
 });
 
 module.exports = RESPONSE_MESSAGES;

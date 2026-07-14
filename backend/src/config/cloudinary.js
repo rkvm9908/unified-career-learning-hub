@@ -10,7 +10,7 @@ cloudinary.config({
 /**
  * Upload Buffer to Cloudinary
  */
-const uploadToCloudinary = (buffer, folder) => {
+const uploadToCloudinary = (fileBuffer, folder) => {
     return new Promise((resolve, reject) => {
 
         const uploadStream = cloudinary.uploader.upload_stream(
@@ -28,7 +28,7 @@ const uploadToCloudinary = (buffer, folder) => {
         );
 
         streamifier
-            .createReadStream(buffer)
+            .createReadStream(fileBuffer)
             .pipe(uploadStream);
     });
 };

@@ -144,7 +144,7 @@ asyncHandler(async (req, res) => {
 
     const uploadedImage =
         await uploadToCloudinary(
-            req.file.path,
+            req.file.buffer,
             "projects"
         );
 

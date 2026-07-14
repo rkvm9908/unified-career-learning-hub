@@ -92,6 +92,18 @@ const RESPONSE_MESSAGES = Object.freeze({
     RESUME_FILE_NOT_FOUND: "Resume file not found.",
     FILE_REQUIRED: "Please upload a PDF file.",
 
+    // ==========================
+    // Job
+    // ==========================
+    JOB_CREATED: "Job created successfully.",
+    JOBS_FETCHED: "Jobs fetched successfully.",
+    JOB_FETCHED: "Job fetched successfully.",
+    JOB_UPDATED: "Job updated successfully.",
+    JOB_DELETED: "Job deleted successfully.",
+    JOB_NOT_FOUND: "Job not found.",
+    JOB_FEATURE_UPDATED: "Job featured status updated successfully.",
+    JOB_LOGO_UPDATED: "Company logo updated successfully.",
+    FEATURED_JOBS_FETCHED: "Featured jobs fetched successfully.",
 });
 
 

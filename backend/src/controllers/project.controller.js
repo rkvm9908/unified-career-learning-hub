@@ -233,5 +233,5 @@ module.exports = {
     uploadProjectImageController,
     toggleFeaturedProjectController,
     getFeaturedProjectsController,
-    toggleLikeProjectController
+    toggleLikeProjectController,
 };

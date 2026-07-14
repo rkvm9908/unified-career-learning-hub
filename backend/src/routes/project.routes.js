@@ -11,14 +11,12 @@ const {
     toggleFeaturedProjectController,
     getFeaturedProjectsController,
     toggleLikeProjectController,
-    toggleBookmarkController,
-    getBookmarksController
 } = require("../controllers/project.controller");
 const {
     protect,
     optionalAuth
 } = require("../middleware/auth.middleware");
-const upload = require("../middleware/upload.middleware");
+const { uploadImage } = require("../middleware/upload.middleware");
 const validate = require("../middleware/validate.middleware");
 
 const {
@@ -81,7 +79,7 @@ router.get(
 router.patch(
     "/:id/image",
     protect,
-    upload.single("image"),
+    uploadImage.single("image"),
     uploadProjectImageController
 );
 
@@ -103,24 +101,5 @@ router.delete(
     protect,
     deleteProjectController
 );
-
-/**
- * Bookmark Routes
- */
-
-// Toggle Bookmark
-router.post(
-    "/bookmarks/:projectId",
-    protect,
-    toggleBookmarkController
-);
-
-// Get My Bookmarks
-router.get(
-    "/bookmarks",
-    protect,
-    getBookmarksController
-);
-
 
 module.exports = router;

@@ -21,3 +21,12 @@ feat(resume): implement resume module
 feat(job): implement job module
 
 feat(admin): implement admin module
+
+
+------------------------------
+
+{
+  "email": "arunkumar01@gmail.com",
+  "password": "Arun@123"
+}
+

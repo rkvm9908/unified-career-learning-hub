@@ -78,6 +78,22 @@ const RESPONSE_MESSAGES = Object.freeze({
     COMMENT_UPDATED: "Comment updated successfully.",
     COMMENT_DELETED: "Comment deleted successfully.",
     COMMENT_NOT_FOUND: "Comment not found.",
+
+    // ============================
+    // Resume 
+    // ===========================
+    RESUME_ALREADY_EXISTS: "Resume already exists.",
+    RESUME_NOT_FOUND: "Resume not found.",
+    RESUME_CREATED: "Resume created successfully.",
+    RESUME_FETCHED: "Resume fetched successfully.",
+    RESUME_UPDATED: "Resume updated successfully.",
+    RESUME_DELETED: "Resume deleted successfully.",
+    RESUME_UPLOADED: "Resume uploaded successfully.",
+    RESUME_FILE_NOT_FOUND: "Resume file not found.",
+    FILE_REQUIRED: "Please upload a PDF file.",
+
 });
+
+
 
 module.exports = RESPONSE_MESSAGES;

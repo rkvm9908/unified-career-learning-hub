@@ -10,23 +10,37 @@ const {
 const { protect } = require("../middleware/auth.middleware");
 
 const validate = require("../middleware/validate.middleware");
-const upload = require("../middleware/upload.middleware");
+const { uploadImage } = require("../middleware/upload.middleware");
 const router = express.Router();
 const {
     updateProfileSchema,
     changePasswordSchema
 } = require("../validators/user.validator");
 
-router.route("/me")
-    .get(
+/**
+ *  Profile
+ */
+router.get(
+        "/me",
         protect,
         getMyProfile
     )
-    .delete(
+
+/**
+ * Deactivate
+ */
+router.delete(
+        "/deactivate",
         protect,
         deleteMyAccount
     )
-    .patch(
+
+/**
+ * Update Profile
+ */
+
+router.patch(
+        "update-profile",
         protect,
         validate(updateProfileSchema),
         updateMyProfile
@@ -48,7 +62,7 @@ router.patch(
 router.patch(
     "/profile-image",
     protect,
-    upload.single("profileImage"),
+    uploadImage.single("profileImage"),
     uploadMyProfileImage
 );
 

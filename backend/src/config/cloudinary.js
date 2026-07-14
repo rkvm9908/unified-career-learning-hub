@@ -1,7 +1,6 @@
 const { v2: cloudinary } = require("cloudinary");
-const fs = require("fs");
+const streamifier = require("streamifier");
 
-// Configure Cloudinary
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -9,37 +8,46 @@ cloudinary.config({
 });
 
 /**
- * Upload File to Cloudinary
+ * Upload Buffer to Cloudinary
  */
-const uploadToCloudinary = async (filePath, folder = "career-learning-hub") => {
+const uploadToCloudinary = (buffer, folder) => {
+    return new Promise((resolve, reject) => {
 
-    if (!filePath) {
-        return null;
-    }
+        const uploadStream = cloudinary.uploader.upload_stream(
+            {
+                folder,
+                resource_type: "auto"
+            },
+            (error, result) => {
+                if (error) {
+                    return reject(error);
+                }
 
-    const result = await cloudinary.uploader.upload(filePath, {
-        folder,
-        resource_type: "auto"
+                resolve(result);
+            }
+        );
+
+        streamifier
+            .createReadStream(buffer)
+            .pipe(uploadStream);
     });
-
-    // Delete local file after upload
-    if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath);
-    }
-
-    return result;
 };
 
 /**
- * Delete File from Cloudinary
+ * Delete File From Cloudinary
  */
 const deleteFromCloudinary = async (publicId) => {
 
     if (!publicId) {
-        return null;
+        return;
     }
 
-    return await cloudinary.uploader.destroy(publicId);
+    return await cloudinary.uploader.destroy(
+        publicId,
+        {
+            resource_type: "auto"
+        }
+    );
 };
 
 module.exports = {

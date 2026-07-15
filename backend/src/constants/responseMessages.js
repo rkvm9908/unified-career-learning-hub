@@ -104,6 +104,16 @@ const RESPONSE_MESSAGES = Object.freeze({
     JOB_FEATURE_UPDATED: "Job featured status updated successfully.",
     JOB_LOGO_UPDATED: "Company logo updated successfully.",
     FEATURED_JOBS_FETCHED: "Featured jobs fetched successfully.",
+
+    // ==========================
+    // Notification
+    // ==========================
+    NOTIFICATIONS_FETCHED: "Notifications fetched successfully.",
+    NOTIFICATION_CREATED: "Notification created successfully.",
+    NOTIFICATION_UPDATED: "Notification updated successfully.",
+    NOTIFICATION_DELETED: "Notification deleted successfully.",
+    NOTIFICATION_NOT_FOUND: "Notification not found.",
+    ALL_NOTIFICATIONS_READ: "All notifications marked as read.",
 });
 
 

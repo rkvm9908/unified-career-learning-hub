@@ -30,3 +30,83 @@ feat(admin): implement admin module
   "password": "Arun@123"
 }
 
+Unified Career & Learning Hub
+
+Backend (Node.js + Express)
+│
+├── Authentication
+├── User
+├── Project
+├── Bookmark
+├── Resume
+├── Comment
+├── Job
+├── Notification
+├── Connection / Follow
+├── Chat
+├── Dashboard
+├── Search
+├── Admin
+└── REST APIs
+
+Frontend (React.js)
+│
+├── Authentication UI
+├── Landing Page
+├── Dashboard
+├── User Profile
+├── Project Management
+├── Resume Builder
+├── Job Portal
+├── Notifications
+├── Chat
+├── Search
+├── Admin Panel
+└── Settings
+
+AI Service (Python)
+│
+├── FastAPI / Flask
+├── Resume Analyzer
+├── Skill Gap Analysis
+├── Project Recommendation
+├── Job Recommendation
+├── Learning Path Recommendation
+├── Resume ATS Score
+├── AI Career Assistant
+├── Interview Question Generator
+└── ML Models
+
+Database
+│
+└── MongoDB
+
+Cloud Services
+│
+├── Cloudinary
+├── JWT
+└── Email Service
+
+Deployment
+│
+├── Backend
+├── Frontend
+├── AI Service
+└── MongoDB Atlas
+
+React.js Frontend
+        │
+        ▼
+Express REST API
+        │
+        ├──────────────► MongoDB
+        │
+        ├──────────────► Cloudinary
+        │
+        ├──────────────► Email Service
+        │
+        ▼
+Python AI Service
+        │
+        ▼
+Machine Learning Models

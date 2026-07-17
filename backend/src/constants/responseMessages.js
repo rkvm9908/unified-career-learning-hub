@@ -125,6 +125,21 @@ const RESPONSE_MESSAGES = Object.freeze({
     FOLLOWING_FETCHED: "Following list fetched successfully.",
     CANNOT_FOLLOW_SELF: "You cannot follow yourself.",
 
+    // ==========================
+    // Message
+    // ==========================
+
+    CONVERSATIONS_FETCHED: "Conversations fetched successfully.",
+    CONVERSATION_FETCHED: "Conversation fetched successfully.",
+    CONVERSATION_NOT_FOUND: "Conversation not found.",
+    CONVERSATION_MARKED_READ: "Conversation marked as read.",
+    CONVERSATION_DELETED: "Conversation deleted successfully.",
+    MESSAGE_SENT: "Message sent successfully.",
+    MESSAGE_NOT_FOUND: "Message not found.",
+    MESSAGES_FETCHED: "Messages fetched successfully.",
+    MESSAGE_UPDATED: "Message updated successfully.",
+    MESSAGE_DELETED: "Message deleted successfully.",
+    CANNOT_MESSAGE_SELF: "You cannot send messages to yourself.",
 });
 
 

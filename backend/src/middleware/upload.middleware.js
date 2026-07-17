@@ -31,8 +31,38 @@ const uploadResume = multer({
         cb(new Error("Only PDF files are allowed."));
     }
 });
-
+// Chat Attachment Upload
+const uploadMessageAttachment = multer({
+    storage,
+    limits: {
+        fileSize: 10 * 1024 * 1024
+    },
+    fileFilter(req, file, cb) {
+        const allowedTypes = [
+            "application/pdf",
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "application/vnd.ms-excel",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "application/vnd.ms-powerpoint",
+            "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        ];
+        if (
+            file.mimetype.startsWith("image/") ||
+            file.mimetype.startsWith("audio/") ||
+            allowedTypes.includes(file.mimetype)
+        ) {
+            return cb(null, true);
+        }
+        cb(
+            new Error(
+                "Unsupported attachment type."
+            )
+        );
+    }
+});
 module.exports = {
     uploadImage,
-    uploadResume
+    uploadResume,
+    uploadMessageAttachment
 };

@@ -97,9 +97,46 @@ const notifyJobApplication = async ({
     });
 };
 
+/**
+ * Notify Message
+ */
+const notifyMessage = async ({
+    recipientId,
+    senderId,
+    conversationId
+}) => {
+
+    if (
+        recipientId.toString() ===
+        senderId.toString()
+    ) {
+        return;
+    }
+
+    await createNotification({
+
+        recipient: recipientId,
+
+        sender: senderId,
+
+        type: "MESSAGE",
+
+        title: "New Message",
+
+        message: "You received a new message.",
+
+        referenceModel: "Conversation",
+
+        referenceId: conversationId
+
+    });
+
+};
+
 module.exports = {
     notifyProjectLike,
     notifyProjectComment,
     notifyFollow,
+    notifyMessage,
     notifyJobApplication
 };

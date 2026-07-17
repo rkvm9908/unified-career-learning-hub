@@ -114,6 +114,17 @@ const RESPONSE_MESSAGES = Object.freeze({
     NOTIFICATION_DELETED: "Notification deleted successfully.",
     NOTIFICATION_NOT_FOUND: "Notification not found.",
     ALL_NOTIFICATIONS_READ: "All notifications marked as read.",
+
+
+    // ==========================
+    // Connection
+    // ==========================
+    FOLLOWED_SUCCESSFULLY: "User followed successfully.",
+    UNFOLLOWED_SUCCESSFULLY: "User unfollowed successfully.",
+    FOLLOWERS_FETCHED: "Followers fetched successfully.",
+    FOLLOWING_FETCHED: "Following list fetched successfully.",
+    CANNOT_FOLLOW_SELF: "You cannot follow yourself.",
+
 });
 
 

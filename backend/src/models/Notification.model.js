@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { NOTIFICATION_TYPE, REFERENCE_MODEL } = require("../constants/enums");
 
 const { Schema } = mongoose;
 
@@ -19,13 +20,7 @@ const notificationSchema = new Schema(
 
         type: {
             type: String,
-            enum: [
-                "LIKE_PROJECT",
-                "COMMENT_PROJECT",
-                "FOLLOW_USER",
-                "JOB_APPLICATION",
-                "SYSTEM"
-            ],
+            enum: NOTIFICATION_TYPE,
             required: true
         },
 
@@ -50,13 +45,7 @@ const notificationSchema = new Schema(
 
         referenceModel: {
             type: String,
-            enum: [
-                "Project",
-                "Job",
-                "Comment",
-                "User",
-                "System"
-            ],
+            enum: REFERENCE_MODEL,
             default: "System"
         },
 

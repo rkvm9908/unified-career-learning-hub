@@ -1,5 +1,5 @@
 const { z } = require("zod");
-
+const { APPLICATION_STATUS } = require("../constants/enums");
 /**
  * Apply Job Validation
  */
@@ -31,15 +31,7 @@ const applyJobSchema = z.object({
  */
 const updateApplicationStatusSchema = z.object({
 
-    status: z.enum([
-        "Pending",
-        "Reviewed",
-        "Shortlisted",
-        "Interview",
-        "Selected",
-        "Rejected",
-        "Withdrawn"
-    ]),
+    status: z.enum(APPLICATION_STATUS),
 
     notes: z
         .string()

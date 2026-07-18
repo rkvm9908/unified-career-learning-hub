@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { MESSAGE_TYPE } = require("../constants/enums");
 
 const { Schema } = mongoose;
 
@@ -20,13 +21,7 @@ const messageSchema = new Schema(
 
         messageType: {
             type: String,
-            enum: [
-                "TEXT",
-                "IMAGE",
-                "FILE",
-                "VOICE",
-                "SYSTEM"
-            ],
+            enum: MESSAGE_TYPE,
             default: "TEXT"
         },
 

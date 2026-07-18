@@ -7,10 +7,10 @@ const RESPONSE_MESSAGES =
 
 const {
     notifyMessage
-} = require("../helpers/notification.helper");
+} = require("../constants/notification.helper");
 const {
     emitToConversation
-} = require("../socket/socket");
+} = require("../constants/socket_events");
 const {
     sendMessage,
     getMessages,

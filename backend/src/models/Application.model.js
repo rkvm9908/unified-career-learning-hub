@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const APPLICATION_STATUS = require("../constants/enums");
 const { Schema } = mongoose;
 
 const applicationSchema = new Schema(
@@ -41,15 +41,7 @@ const applicationSchema = new Schema(
 
         status: {
             type: String,
-            enum: [
-                "Pending",
-                "Reviewed",
-                "Shortlisted",
-                "Interview",
-                "Selected",
-                "Rejected",
-                "Withdrawn"
-            ],
+            enum: APPLICATION_STATUS,
             default: "Pending"
         },
 

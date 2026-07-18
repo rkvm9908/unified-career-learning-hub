@@ -360,19 +360,14 @@ const updateApplicationStatus = async (
 
         sender:
             recruiterId,
-
         type:
             "APPLICATION",
-
         title:
             "Application Status Updated",
-
         message:
             `Your application status has been updated to ${application.status}.`,
-
         referenceModel:
             "Application",
-
         referenceId:
             application._id
 

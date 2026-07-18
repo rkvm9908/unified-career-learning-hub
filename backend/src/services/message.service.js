@@ -4,7 +4,7 @@ const Message = require("../models/Message.model");
 const User = require("../models/User.model");
 const ApiError = require("../utils/ApiError");
 const RESPONSE_MESSAGES = require("../constants/responseMessages");
-const { notifyMessage } = require("../helpers/notification.helper");
+const { notifyMessage } = require("../constants/notification.helper");
 const { uploadToCloudinary } = require("../config/cloudinary");
 
 /**
@@ -188,7 +188,7 @@ if (file) {
                 messageType,
 
             attachment,
-            
+
             replyTo:
                 messageData.replyTo || null
 

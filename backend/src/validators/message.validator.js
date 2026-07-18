@@ -1,12 +1,9 @@
 const { z } = require("zod");
 
-const MESSAGE_TYPES = [
-    "TEXT",
-    "IMAGE",
-    "FILE",
-    "VOICE",
-    "SYSTEM"
-];
+const {
+    MESSAGE_TYPES,
+    ATTACH_TYPES,
+} = require("../constants/enums");
 
 /**
  * Send Message
@@ -21,12 +18,7 @@ const sendMessageSchema = z.object({
     .default(""),
 
     attachmentType: z
-        .enum([
-            "NONE",
-            "IMAGE",
-            "FILE",
-            "VOICE"
-        ])
+        .enum(ATTACH_TYPES)
         .optional()
         .default("NONE"),
 

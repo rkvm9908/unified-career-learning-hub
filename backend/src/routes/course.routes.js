@@ -1,11 +1,57 @@
 const express = require("express");
+
+const {
+    createCourseController,
+    getAllCoursesController,
+    getCourseByIdController,
+    updateCourseController,
+    deleteCourseController,
+    searchCoursesController
+} = require("../controllers/course.controller");
+
+const { protect, authorize } = require("../middleware/auth.middleware");
+const validate = require("../middleware/validate.middleware");
+
+const {
+    createCourseSchema,
+    updateCourseSchema
+} = require("../validators/course.validator");
+
+const { USER_ROLES } = require("../constants/roles");
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "Course Route Working"
-    });
-});
+/**
+ * Public Routes
+ */
+router.get("/", getAllCoursesController);
+router.get("/search", searchCoursesController);
+router.get("/:id", getCourseByIdController);
+
+/**
+ * Admin Routes
+ */
+router.post(
+    "/",
+    protect,
+    authorize(USER_ROLES.ADMIN),
+    validate(createCourseSchema),
+    createCourseController
+);
+
+router.patch(
+    "/:id",
+    protect,
+    authorize(USER_ROLES.ADMIN),
+    validate(updateCourseSchema),
+    updateCourseController
+);
+
+router.delete(
+    "/:id",
+    protect,
+    authorize(USER_ROLES.ADMIN),
+    deleteCourseController
+);
 
 module.exports = router;

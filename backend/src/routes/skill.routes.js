@@ -17,7 +17,7 @@ const {
     updateSkillSchema
 } = require("../validators/skill.validator");
 
-const { USER_ROLES } = require("../constants/enums");
+const { ROLES } = require("../constants/roles");
 
 const router = express.Router();
 
@@ -34,7 +34,7 @@ router.get("/:id", getSkillByIdController);
 router.post(
     "/",
     protect,
-    authorize(USER_ROLES.ADMIN),
+    authorize(ROLES.ADMIN),
     validate(createSkillSchema),
     createSkillController
 );
@@ -42,7 +42,7 @@ router.post(
 router.patch(
     "/:id",
     protect,
-    authorize(USER_ROLES.ADMIN),
+    authorize(ROLES.ADMIN),
     validate(updateSkillSchema),
     updateSkillController
 );
@@ -50,7 +50,7 @@ router.patch(
 router.delete(
     "/:id",
     protect,
-    authorize(USER_ROLES.ADMIN),
+    authorize(ROLES.ADMIN),
     deleteSkillController
 );
 

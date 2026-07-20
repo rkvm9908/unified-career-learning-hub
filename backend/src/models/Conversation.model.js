@@ -68,7 +68,7 @@ conversationSchema.index({
     lastMessageAt: -1
 });
 
-module.exports = mongoose.model(
+module.exports = mongoose.models.Conversation || mongoose.model(
     "Conversation",
     conversationSchema
 );

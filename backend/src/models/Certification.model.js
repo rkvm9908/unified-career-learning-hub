@@ -50,6 +50,19 @@ const certificationSchema = new Schema(
             maxlength: 1000,
             default: ""
         },
+        isVerified:{
+            type:Boolean,
+            default:false
+        },
+        verifiedBy:{
+            type:Schema.Types.ObjectId,
+            ref:"User",
+            default:null
+        },
+        verifiedAt:{
+            type:Date,
+            default:null
+        },
         isActive: {
             type: Boolean,
             default: true
@@ -60,8 +73,12 @@ const certificationSchema = new Schema(
         versionKey: false
     }
 );
-
-module.exports = mongoose.model(
+certificationSchema.index({
+    owner:1,
+    isVerified:1,
+    isActive:1
+});
+module.exports = mongoose.models.Certification || mongoose.model(
     "Certification",
     certificationSchema
 );

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const SKILL_CATEGORIES = require("../constants/skill.constants");
+const { SKILL_CATEGORY } = require("../constants/enums");
 const { Schema } = mongoose;
 
 const skillSchema = new Schema(
@@ -15,8 +15,8 @@ const skillSchema = new Schema(
 
         category: {
             type: String,
-            enum: SKILL_CATEGORIES,
-            default: "Other"
+            enum: Object.values(SKILL_CATEGORY),
+            default: SKILL_CATEGORY.NONE
         },
 
         description: {
@@ -28,6 +28,20 @@ const skillSchema = new Schema(
         isVerified: {
             type: Boolean,
             default: false
+        },
+        jobCount:{
+            type:Number,
+            default:0
+        },
+
+        courseCount:{
+            type:Number,
+            default:0
+        },
+
+        userCount:{
+            type:Number,
+            default:0
         },
 
         isActive: {
@@ -42,11 +56,8 @@ const skillSchema = new Schema(
     }
 );
 
-skillSchema.index({
-    name: 1
-});
 
-module.exports = mongoose.model(
+module.exports = mongoose.models.Skill || mongoose.model(
     "Skill",
     skillSchema
 );

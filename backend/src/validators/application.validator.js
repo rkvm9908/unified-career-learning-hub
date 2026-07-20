@@ -1,5 +1,5 @@
 const { z } = require("zod");
-const { APPLICATION_STATUS } = require("../constants/enums");
+const APPLICATION_STATUS  = require("../constants/enums");
 /**
  * Apply Job Validation
  */

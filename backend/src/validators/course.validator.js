@@ -1,10 +1,7 @@
 const { z } = require("zod");
 
-const {
-    COURSE_LEVELS,
-    COURSE_STATUS
-} = require("../constants/enums");
-
+const COURSE_LEVEL = require("../constants/enums");
+const COURSE_STATUS = require("../constants/status");
 /**
  * Create Course
  */
@@ -54,7 +51,7 @@ const createCourseSchema = z.object({
         .default([]),
 
     level: z
-        .enum(COURSE_LEVELS)
+        .enum(COURSE_LEVEL)
         .default("Beginner"),
 
     duration: z

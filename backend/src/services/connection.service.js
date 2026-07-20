@@ -6,7 +6,7 @@ const RESPONSE_MESSAGES = require("../constants/responseMessages");
 
 const {
     notifyFollow
-} = require("../helpers/notification.helper");
+} = require("../utils/notification.helper");
 
 /**
  * Toggle Follow / Unfollow

@@ -31,7 +31,7 @@ bookmarkSchema.index(
     }
 );
 
-module.exports = mongoose.model(
+module.exports = mongoose.models.Bookmark || mongoose.model(
     "Bookmark",
     bookmarkSchema
 );

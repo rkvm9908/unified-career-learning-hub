@@ -1,7 +1,7 @@
 const { z } = require("zod");
 
 const {
-    SKILL_CATEGORIES
+    SKILL_CATEGORY
 } = require("../constants/enums");
 
 /**
@@ -16,8 +16,8 @@ const createSkillSchema = z.object({
         .max(100),
 
     category: z
-        .enum(SKILL_CATEGORIES)
-        .default("Other"),
+        .enum(SKILL_CATEGORY)
+        .default(SKILL_CATEGORY.NONE),
 
     description: z
         .string()

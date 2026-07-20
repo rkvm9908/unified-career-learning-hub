@@ -80,7 +80,40 @@ const optionalAuth = asyncHandler(async (req, res, next) => {
     next();
 });
 
+const recruiterApproved = (
+    req,
+    res,
+    next
+) => {
+
+    if (
+        req.user.role === "Recruiter" &&
+        !req.user.isApproved
+    ) {
+
+        throw new ApiError(
+            403,
+            RESPONSE_MESSAGES.RECRUITER_NOT_APPROVED
+        );
+
+    }
+
+    next();
+
+};
+const authorize=(...roles)=>{
+    return(req,res,next)=>{
+        if(!roles.includes(req.user.role)){
+            return next(new ApiError(403,"Forbidden"));
+        }
+
+        next();
+    };
+};
+
 module.exports = {
     protect,
-    optionalAuth
+    optionalAuth,
+    authorize,
+    recruiterApproved
 };

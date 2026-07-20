@@ -5,7 +5,7 @@ const connectDB = require("./src/config/db");
 const http = require("http");
 const {
     initializeSocket
-} = require("./src/socket/socket");
+} = require("./src/constants/socketEvents");
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {

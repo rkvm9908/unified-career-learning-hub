@@ -17,7 +17,7 @@ const {
     updateSkillSchema
 } = require("../validators/skill.validator");
 
-const { ROLES } = require("../constants/roles");
+const ROLES  = require("../constants/roles");
 
 const router = express.Router();
 

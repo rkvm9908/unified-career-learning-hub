@@ -21,8 +21,8 @@ const messageSchema = new Schema(
 
         messageType: {
             type: String,
-            enum: MESSAGE_TYPE,
-            default: "TEXT"
+            enum: Object.values(MESSAGE_TYPE),
+            default: MESSAGE_TYPE.TEXT,
         },
 
         content: {
@@ -113,7 +113,7 @@ messageSchema.index({
     replyTo: 1
 });
 
-module.exports = mongoose.model(
+module.exports = mongoose.models.Message || mongoose.model(
     "Message",
     messageSchema
 );

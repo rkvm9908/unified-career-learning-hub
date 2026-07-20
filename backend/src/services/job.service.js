@@ -1,83 +1,13 @@
 const Job = require("../models/Job.model");
 const ApiError = require("../utils/ApiError");
 const RESPONSE_MESSAGES = require("../constants/responseMessages");
-
+const User = require("../models/User.model");
 /**
  * Safe Job Response
  */
-const getSafeJob = (
-    job
-) => {
-
-    const owner = job.owner;
-
-    return {
-        id: job._id,
-
-        title: job.title,
-
-        company: job.company,
-
-        companyLogo: job.companyLogo,
-
-        location: job.location,
-
-        workMode: job.workMode,
-
-        employmentType: job.employmentType,
-
-        experienceLevel: job.experienceLevel,
-
-        salary: job.salary,
-
-        currency: job.currency,
-
-        skills: job.skills,
-
-        description: job.description,
-
-        responsibilities: job.responsibilities,
-
-        qualifications: job.qualifications,
-
-        benefits: job.benefits,
-
-        applicationDeadline:
-            job.applicationDeadline,
-
-        vacancies: job.vacancies,
-
-        owner: owner
-            ? {
-                    id: owner._id,
-                    firstName: owner.firstName,
-                    lastName: owner.lastName,
-                    username: owner.username,
-                    profileImage: owner.profileImage
-                }
-            : null,
-
-        applicantsCount:
-            job.applicantsCount,
-
-        viewsCount:
-            job.viewsCount,
-
-        status: job.status,
-
-        isFeatured:
-            job.isFeatured,
-
-        isActive:
-            job.isActive,
-
-        createdAt:
-            job.createdAt,
-
-        updatedAt:
-            job.updatedAt
-    };
-};
+const {
+    mapJob
+} = require("../mappers/job.mapper");
 
 /**
  * Create Job
@@ -86,13 +16,28 @@ const createJob = async (
     userId,
     jobData
 ) => {
+    const recruiter = await User.findById(userId);
+
+    if (!recruiter) {
+        throw new ApiError(
+            404,
+            RESPONSE_MESSAGES.USER_NOT_FOUND
+        );
+    }
+
+    if (!recruiter.isApproved) {
+        throw new ApiError(
+            403,
+            RESPONSE_MESSAGES.RECRUITER_NOT_APPROVED
+        );
+    }
 
     const job = await Job.create({
         ...jobData,
         owner: userId
     });
 
-    return getSafeJob(job);
+    return mapJob(job);
 };
 /**
  * Get My Jobs
@@ -107,7 +52,7 @@ const getMyJobs = async (userId) => {
         createdAt: -1
     });
 
-    return jobs.map(getSafeJob);
+    return jobs.map(mapJob);
 };
 /**
  * Get Job By ID
@@ -138,7 +83,7 @@ const getJobById = async (
 
     await job.save();
 
-    return getSafeJob(
+    return mapJob(
         job,
         currentUserId
     );
@@ -168,7 +113,14 @@ const updateJob = async (
             RESPONSE_MESSAGES.FORBIDDEN
         );
     }
+    const recruiter = await User.findById(userId);
 
+    if (!recruiter.isApproved) {
+        throw new ApiError(
+            403,
+            RESPONSE_MESSAGES.RECRUITER_NOT_APPROVED
+        );
+    }
     Object.assign(
         job,
         jobData
@@ -176,7 +128,7 @@ const updateJob = async (
 
     await job.save();
 
-    return getSafeJob(job);
+    return mapJob(job);
 };
 /**
  * Delete Job
@@ -300,7 +252,7 @@ const getAllJobs = async (
 
     return {
 
-        jobs: jobs.map(getSafeJob),
+        jobs: jobs.map(mapJob),
 
         pagination: {
 
@@ -341,7 +293,7 @@ const toggleFeaturedJob = async (
 
     await job.save();
 
-    return getSafeJob(job);
+    return mapJob(job);
 };
 
 /**
@@ -362,7 +314,7 @@ const getFeaturedJobs = async () => {
         createdAt: -1
     });
 
-    return jobs.map((job) => getSafeJob(job));
+    return jobs.map((job) => mapJob(job));
 };
 
 /**
@@ -397,7 +349,14 @@ const uploadCompanyLogo = async (
         );
 
     }
+    const recruiter = await User.findById(userId);
 
+    if (!recruiter.isApproved) {
+        throw new ApiError(
+            403,
+            RESPONSE_MESSAGES.RECRUITER_NOT_APPROVED
+        );
+    }
     job.companyLogo = {
 
         url:
@@ -409,7 +368,7 @@ const uploadCompanyLogo = async (
 
     await job.save();
 
-    return getSafeJob(job);
+    return mapJob(job);
 };
 
 module.exports = {
@@ -422,5 +381,4 @@ module.exports = {
     getFeaturedJobs,
     toggleFeaturedJob,
     uploadCompanyLogo,
-    getSafeJob
 };

@@ -3,13 +3,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const {
-    WORK_MODES,
-    EMPLOYMENT_TYPES,
-    EXPERIENCE_LEVELS,
-    JOB_STATUS,
+    WORK_MODE,
+    EMPLOYMENT_TYPE,
+    EXPERIENCE_LEVEL,
     DEFAULT_CURRENCY
-} = require("../constants/job.constants");
-
+} = require("../constants/enums");
+const { JOB_STATUS } = require("../constants/status");
 const jobSchema = new Schema(
     {
         title: {
@@ -46,20 +45,20 @@ const jobSchema = new Schema(
 
         workMode: {
             type: String,
-            enum: WORK_MODES,
-            default: "Onsite"
+            enum:   Object.values(WORK_MODE),
+            default: WORK_MODE.ONSITE,
         },
 
         employmentType: {
             type: String,
-            enum: EMPLOYMENT_TYPES,
-            default: "Full-Time"
+            enum:   Object.values(EMPLOYMENT_TYPE),
+            default: EMPLOYMENT_TYPE.FULL_TIME
         },
 
         experienceLevel: {
             type: String,
-            enum: EXPERIENCE_LEVELS,
-            default: "Fresher"
+            enum: Object.values(EXPERIENCE_LEVEL),
+            default: EXPERIENCE_LEVEL.FRESHER,
         },
 
         salary: {
@@ -136,8 +135,8 @@ const jobSchema = new Schema(
 
         status: {
             type: String,
-            enum: JOB_STATUS,
-            default: "Open"
+            enum: Object.values(JOB_STATUS),
+            default: JOB_STATUS.OPEN,
         },
 
         isFeatured: {
@@ -173,7 +172,9 @@ jobSchema.index({
     location: 1
 });
 
-module.exports = mongoose.model(
-    "Job",
-    jobSchema
-);
+module.exports =
+    mongoose.models.Job ||
+    mongoose.model(
+        "Job",
+        jobSchema
+    );

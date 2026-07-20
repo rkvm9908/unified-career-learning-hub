@@ -168,6 +168,13 @@ const userSchema = new Schema(
             type: Date
         },
 
+        isApproved: {
+            type: Boolean,
+            default: function () {
+                return this.role !== "Recruiter";
+            }
+        },
+
         isActive: {
             type: Boolean,
             default: true
@@ -225,6 +232,6 @@ userSchema.methods.generateRefreshToken = function () {
     });
 };
 
-const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+
+module.exports = mongoose.models.User || mongoose.model("User", userSchema);

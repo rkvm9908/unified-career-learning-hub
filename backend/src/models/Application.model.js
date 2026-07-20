@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const APPLICATION_STATUS = require("../constants/enums");
+const APPLICATION_STATUS = require("../constants/status");
 const { Schema } = mongoose;
 
 const applicationSchema = new Schema(
@@ -41,8 +41,8 @@ const applicationSchema = new Schema(
 
         status: {
             type: String,
-            enum: APPLICATION_STATUS,
-            default: "Pending"
+            enum: Object.values(APPLICATION_STATUS),
+            default: APPLICATION_STATUS.APPLIED
         },
 
         notes: {
@@ -82,7 +82,9 @@ applicationSchema.index(
     }
 );
 
-module.exports = mongoose.model(
+module.exports = 
+    mongoose.models.Application ||
+    mongoose.model(
     "Application",
     applicationSchema
 );

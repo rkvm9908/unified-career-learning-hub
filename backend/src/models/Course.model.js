@@ -2,11 +2,8 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const {
-    COURSE_LEVELS,
-    COURSE_STATUS
-} = require("../constants/enums");
-
+const { COURSE_LEVEL } = require("../constants/enums");
+const { COURSE_STATUS } = require("../constants/status");
 const courseSchema = new Schema(
     {
         title: {
@@ -21,10 +18,10 @@ const courseSchema = new Schema(
             default: ""
         },
         instructor: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: "User",
             required: true,
-            trim: true,
-            maxlength: 150
+            index: true
         },
         provider: {
             type: String,
@@ -32,9 +29,24 @@ const courseSchema = new Schema(
             trim: true,
             maxlength: 150
         },
-        thumbnail: {
-            type: String,
-            default: ""
+        category:{
+            type:String,
+            required:true
+        },
+        slug:{
+            type:String,
+            unique:true,
+            index:true
+        },
+        thumbnail:{
+            url:{
+                type:String,
+                default:""
+            },
+            publicId:{
+                type:String,
+                default:""
+            }
         },
         courseUrl: {
             type: String,
@@ -47,8 +59,8 @@ const courseSchema = new Schema(
         }],
         level: {
             type: String,
-            enum: COURSE_LEVELS,
-            default: "Beginner"
+            enum: Object.values(COURSE_LEVEL),
+            default: COURSE_LEVEL.BEGINNER
         },
         duration: {
             type: Number,
@@ -60,8 +72,8 @@ const courseSchema = new Schema(
         },
         status: {
             type: String,
-            enum: COURSE_STATUS,
-            default: "Published"
+            enum: Object.values(COURSE_STATUS),
+            default: COURSE_STATUS.PUBLISHED,
         },
         isFree: {
             type: Boolean,
@@ -95,7 +107,8 @@ courseSchema.index({
     provider: "text"
 });
 
-module.exports = mongoose.model(
+module.exports = mongoose.models.Course || 
+    mongoose.model(
     "Course",
     courseSchema
 );

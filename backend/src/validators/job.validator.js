@@ -1,9 +1,10 @@
 const { z } = require("zod");
-const { WORK_MODES,
-        EMPLOYMENT_TYPES,
-        EXPERIENCE_LEVELS,
+const { WORK_MODE,
+        EMPLOYMENT_TYPE,
+        EXPERIENCE_LEVEL,
         DEFAULT_CURRENCY
-    } = require("../constants/job.constants");
+    } = require("../constants/enums");
+
 /**
  * Create Job Validation
  */
@@ -28,16 +29,16 @@ const createJobSchema = z.object({
         .max(100),
 
     workMode: z
-        .enum(WORK_MODES)
-        .default("Onsite"),
+        .enum(WORK_MODE)
+        .default(WORK_MODE.ONSITE),
 
     employmentType: z
-        .enum(EMPLOYMENT_TYPES)
-        .default("Full-Time"),
+        .enum(EMPLOYMENT_TYPE)
+        .default(EMPLOYMENT_TYPE.FULL_TIME),
 
     experienceLevel: z
-        .enum(EXPERIENCE_LEVELS)
-        .default("Fresher"),
+        .enum(EXPERIENCE_LEVEL)
+        .default(EXPERIENCE_LEVEL.FRESHER),
 
     salary: z.coerce
         .number()

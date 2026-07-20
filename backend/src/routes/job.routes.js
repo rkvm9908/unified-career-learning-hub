@@ -15,9 +15,9 @@ const {
 
 const {
     protect,
-    optionalAuth
+    optionalAuth,
+    recruiterApproved
 } = require("../middleware/auth.middleware");
-
 const {
     authorize
 } = require("../middleware/role.middleware");
@@ -45,6 +45,8 @@ const router = express.Router();
 router.post(
     "/",
     protect,
+    authorize(ROLES.RECRUITER),
+    recruiterApproved,
     validate(createJobSchema),
     createJobController
 );
@@ -81,6 +83,8 @@ router.get(
 router.patch(
     "/:id",
     protect,
+    authorize(ROLES.RECRUITER),
+    recruiterApproved,
     validate(updateJobSchema),
     updateJobController
 );
@@ -89,6 +93,8 @@ router.patch(
 router.delete(
     "/:id",
     protect,
+    authorize(ROLES.RECRUITER),
+    recruiterApproved,
     deleteJobController
 );
 
@@ -96,6 +102,8 @@ router.delete(
 router.patch(
     "/:id/logo",
     protect,
+    authorize(ROLES.RECRUITER),
+    recruiterApproved,
     uploadImage.single("logo"),
     uploadCompanyLogoController
 );

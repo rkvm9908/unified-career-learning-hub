@@ -17,7 +17,7 @@ const {
     updateCourseSchema
 } = require("../validators/course.validator");
 
-const { USER_ROLES } = require("../constants/roles");
+const ROLES = require("../constants/roles");
 
 const router = express.Router();
 
@@ -34,7 +34,7 @@ router.get("/:id", getCourseByIdController);
 router.post(
     "/",
     protect,
-    authorize(USER_ROLES.ADMIN),
+    authorize(ROLES.ADMIN),
     validate(createCourseSchema),
     createCourseController
 );
@@ -42,7 +42,7 @@ router.post(
 router.patch(
     "/:id",
     protect,
-    authorize(USER_ROLES.ADMIN),
+    authorize(ROLES.ADMIN),
     validate(updateCourseSchema),
     updateCourseController
 );
@@ -50,7 +50,7 @@ router.patch(
 router.delete(
     "/:id",
     protect,
-    authorize(USER_ROLES.ADMIN),
+    authorize(ROLES.ADMIN),
     deleteCourseController
 );
 

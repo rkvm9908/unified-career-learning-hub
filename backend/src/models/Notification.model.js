@@ -20,7 +20,7 @@ const notificationSchema = new Schema(
 
         type: {
             type: String,
-            enum: NOTIFICATION_TYPE,
+            enum: Object.values(NOTIFICATION_TYPE),
             required: true
         },
 
@@ -45,8 +45,8 @@ const notificationSchema = new Schema(
 
         referenceModel: {
             type: String,
-            enum: REFERENCE_MODEL,
-            default: "System"
+            enum: Object.values(REFERENCE_MODEL),
+            default: REFERENCE_MODEL.SYSTEM,
         },
 
         isRead: {
@@ -65,7 +65,7 @@ const notificationSchema = new Schema(
     }
 );
 
-module.exports = mongoose.model(
+module.exports = mongoose.models.Notification || mongoose.model(
     "Notification",
     notificationSchema
 );

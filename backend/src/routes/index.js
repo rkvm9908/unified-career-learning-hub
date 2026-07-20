@@ -12,12 +12,13 @@ const courseRoutes = require("./course.routes");
 const jobRoutes = require("./job.routes");
 const notificationRoutes = require("./notification.routes");
 const resumeRoutes = require("./resume.routes");
-const adminRoutes = require("./admin.routes");
+const adminRoutes = require("./admin/index");
 const healthRoutes = require("./health.routes");
 const commentRoutes = require("./comment.routes");
 const bookmarkRoutes = require("./bookmark.routes");
 const messageRoutes = require("./message.routes");
 const conversationRoutes = require("./conversation.routes");
+const searchRoutes=require("./search.routes");
 
 router.use("/auth", authRoutes);
 router.use("/user", userRoutes);
@@ -35,4 +36,6 @@ router.use("/api/comment", commentRoutes);
 router.use("/bookmarks", bookmarkRoutes);
 router.use("/messages", messageRoutes);
 router.use("/conversation", conversationRoutes);
+router.use("/search", searchRoutes);
+
 module.exports = router;

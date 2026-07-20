@@ -3,19 +3,12 @@ const express = require("express");
 const {
 
     applyJobController,
-
     getMyApplicationsController,
-
     getApplicationByIdController,
-
     getApplicationsByJobController,
-
     updateApplicationStatusController,
-
     updateApplicationController,
-
     withdrawApplicationController,
-
     deleteApplicationController
 
 } = require("../controllers/application.controller");

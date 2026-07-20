@@ -104,6 +104,11 @@ const RESPONSE_MESSAGES = Object.freeze({
     JOB_FEATURE_UPDATED: "Job featured status updated successfully.",
     JOB_LOGO_UPDATED: "Company logo updated successfully.",
     FEATURED_JOBS_FETCHED: "Featured jobs fetched successfully.",
+    INVALID_JOB_STATUS: "Invalid job status.",
+    JOB_STATUS_UPDATED: "Job status updated successfully.",
+    JOB_RESTORED: "Job restored successfully.",
+    JOB_ALREADY_DELETED: "Job is already deleted.",
+    JOB_ALREADY_ACTIVE: "Job is already active.",
 
     // ==========================
     // Notification
@@ -140,6 +145,83 @@ const RESPONSE_MESSAGES = Object.freeze({
     MESSAGE_UPDATED: "Message updated successfully.",
     MESSAGE_DELETED: "Message deleted successfully.",
     CANNOT_MESSAGE_SELF: "You cannot send messages to yourself.",
+
+    // ==========================
+    // Application
+    // ==========================
+    APPLICATION_STATUS_UPDATED: "Application status updated successfully.",
+    APPLICATION_DELETED: "Application deleted successfully.",
+    APPLICATION_RESTORED: "Application restored successfully.",
+    APPLICATION_ALREADY_DELETED: "Application is already deleted.",
+    APPLICATION_ALREADY_ACTIVE: "Application is already active.",
+    INVALID_APPLICATION_STATUS: "Invalid application status.",
+
+    // ==========================
+    // Course
+    // ==========================
+
+    COURSES_FETCHED:"Courses fetched successfully.",
+    COURSE_FETCHED:"Course fetched successfully.",
+    COURSE_STATUS_UPDATED:"Course status updated successfully.",
+    COURSE_DELETED:"Course deleted successfully.",
+    COURSE_RESTORED:"Course restored successfully.",
+    COURSE_NOT_FOUND:"Course not found.",
+    INVALID_COURSE_STATUS:"Invalid course status.",
+
+    // ==========================
+    // Skill
+    // ==========================
+
+    SKILLS_FETCHED:"Skills fetched successfully.",
+    SKILL_FETCHED:"Skill fetched successfully.",
+    SKILL_VERIFIED:"Skill verified successfully.",
+    SKILL_DELETED:"Skill deleted successfully.",
+    SKILL_RESTORED:"Skill restored successfully.",
+    SKILL_NOT_FOUND:"Skill not found.",
+
+    // ==========================
+    // Admin
+    // ==========================
+
+    RECRUITER_NOT_APPROVED: "Your recruiter account is awaiting admin approval.",
+    RECRUITERS_FETCHED: "Recruiters fetched successfully.",
+    RECRUITER_APPROVED: "Recruiter approved successfully.",
+    RECRUITER_REJECTED: "Recruiter rejected successfully.",
+    RECRUITER_NOT_FOUND: "Recruiter not found.",
+
+    // ==========================
+    // Certification
+    // ==========================
+
+    CERTIFICATIONS_FETCHED:"Certifications fetched successfully.",
+    CERTIFICATION_FETCHED:"Certification fetched successfully.",
+    CERTIFICATION_VERIFIED:"Certification verified successfully.",
+    CERTIFICATION_DELETED:"Certification deleted successfully.",
+    CERTIFICATION_RESTORED:"Certification restored successfully.",
+    CERTIFICATION_NOT_FOUND:"Certification not found.",
+
+    // ========================
+    // Dashboard
+    // ========================
+
+    RECENT_USERS_FETCHED:"Recent users fetched successfully.",
+    RECENT_JOBS_FETCHED:"Recent jobs fetched successfully.",
+    RECENT_APPLICATIONS_FETCHED:"Recent applications fetched successfully.",
+
+    USER_GROWTH_FETCHED:"User growth fetched successfully.",
+    JOB_GROWTH_FETCHED:"Job growth fetched successfully.",
+    APPLICATION_GROWTH_FETCHED:"Application growth fetched successfully.",
+
+    TOP_SKILLS_FETCHED:"Top skills fetched successfully.",
+    TOP_COURSES_FETCHED:"Top courses fetched successfully.",
+    TOP_RECRUITERS_FETCHED:"Top recruiters fetched successfully.",
+
+    PLATFORM_STATISTICS_FETCHED:"Platform statistics fetched successfully.",
+    SYSTEM_HEALTH_FETCHED:"System health fetched successfully.",
+    DASHBOARD_CHARTS_FETCHED:"Dashboard charts fetched successfully.",
+
+    SEARCH_QUERY_REQUIRED:"Search query is required.",
+    SEARCH_RESULTS_FETCHED:"Search results fetched successfully.",
 });
 
 

@@ -40,7 +40,7 @@ connectionSchema.index(
     }
 );
 
-module.exports = mongoose.model(
+module.exports = mongoose.models.Connection || mongoose.model(
     "Connection",
     connectionSchema
 );

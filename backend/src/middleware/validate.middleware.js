@@ -1,20 +1,27 @@
 const ApiError = require("../utils/ApiError");
 const RESPONSE_MESSAGES = require("../constants/responseMessages");
 
-const validate = (schema) => {
-    return (req, res, next) => {
-        try {
-            // Validate request body
-            const validatedData = schema.parse(req.body);
-            req.body = validatedData;
+const validate=(schema,source="body")=>{
+
+    return(req,res,next)=>{
+
+        try{
+
+            const validatedData=schema.parse(
+                req[source]
+            );
+
+            req[source]=validatedData;
 
             next();
-        } catch (error) {
-            const errors =
-                error.issues?.map((issue) => ({
-                    field: issue.path.join("."),
-                    message: issue.message
-                })) || [];
+
+        }catch(error){
+
+            const errors=
+                error.issues?.map(issue=>({
+                    field:issue.path.join("."),
+                    message:issue.message
+                }))||[];
 
             return next(
                 new ApiError(
@@ -23,8 +30,11 @@ const validate = (schema) => {
                     errors
                 )
             );
+
         }
+
     };
+
 };
 
-module.exports = validate;
+module.exports=validate;

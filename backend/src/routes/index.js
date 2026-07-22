@@ -19,6 +19,7 @@ const bookmarkRoutes = require("./bookmark.routes");
 const messageRoutes = require("./message.routes");
 const conversationRoutes = require("./conversation.routes");
 const searchRoutes=require("./search.routes");
+const aiRoutes=require("./ai.routes");
 
 router.use("/auth", authRoutes);
 router.use("/user", userRoutes);
@@ -37,5 +38,6 @@ router.use("/bookmarks", bookmarkRoutes);
 router.use("/messages", messageRoutes);
 router.use("/conversation", conversationRoutes);
 router.use("/search", searchRoutes);
+router.use("/ai",aiRoutes);
 
 module.exports = router;

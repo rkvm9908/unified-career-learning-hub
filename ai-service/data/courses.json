@@ -1,0 +1,54 @@
+[
+    {
+        "id":1,
+        "title":"Complete Java Masterclass",
+        "provider":"Udemy",
+        "url":"https://www.udemy.com/",
+        "skills":[
+            "Java",
+            "Spring Boot",
+            "REST API"
+        ]
+    },
+    {
+        "id":2,
+        "title":"Python for Everybody",
+        "provider":"Coursera",
+        "url":"https://www.coursera.org/",
+        "skills":[
+            "Python",
+            "Pandas",
+            "NumPy"
+        ]
+    },
+    {
+        "id":3,
+        "title":"Complete MERN Stack",
+        "provider":"Udemy",
+        "url":"https://www.udemy.com/",
+        "skills":[
+            "React",
+            "Node.js",
+            "Express",
+            "MongoDB"
+        ]
+    },
+    {
+        "id":4,
+        "title":"AWS Cloud Practitioner",
+        "provider":"AWS Skill Builder",
+        "url":"https://skillbuilder.aws/",
+        "skills":[
+            "AWS"
+        ]
+    },
+    {
+        "id":5,
+        "title":"Docker Essentials",
+        "provider":"Docker",
+        "url":"https://www.docker.com/",
+        "skills":[
+            "Docker"
+        ]
+    }
+]

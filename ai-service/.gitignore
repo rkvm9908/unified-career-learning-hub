@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.log
+.env
+.venv/
+ucvenv/
+instance/
+*.sqlite3
+uploads/*
+temp/*
+trained_models/*

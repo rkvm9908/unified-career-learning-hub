@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "title": "Java Backend Developer",
+        "company": "Infosys",
+        "skills": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "REST API",
+            "Git"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Python Developer",
+        "company": "TCS",
+        "skills": [
+            "Python",
+            "Django",
+            "FastAPI",
+            "MySQL",
+            "Git"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "MERN Stack Developer",
+        "company": "Zoho",
+        "skills": [
+            "JavaScript",
+            "React",
+            "Node.js",
+            "Express",
+            "MongoDB"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "AI Engineer",
+        "company": "Google",
+        "skills": [
+            "Python",
+            "Machine Learning",
+            "Deep Learning",
+            "TensorFlow",
+            "Scikit-learn"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Full Stack Developer",
+        "company": "Accenture",
+        "skills": [
+            "React",
+            "Node.js",
+            "MongoDB",
+            "Express",
+            "Git"
+        ]
+    }
+]
